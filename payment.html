@@ -1,0 +1,417 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Make Payment</title>
+  <link rel="stylesheet" href="style.css">
+ </head>
+<body>
+  <!-- Sidebar Toggle Button -->
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo-container">
+      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+        <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+        <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+        <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+        <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+      </svg>
+      <span class="logo-text">ElrehSam Homes</span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="locations.html">Locations</a></li>
+      <li><a href="location-detail.html">Location Detail</a></li>
+      <li><a href="payment.html">Payment</a></li>
+      <li><a href="invoice.html">Invoice</a></li>
+      <li><a href="crypto.html">Crypto</a></li>
+      <li><a href="#properties">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="login-btn"><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Left Sidebar Menu -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-close" id="sidebarClose">✕</div>
+    <div class="sidebar-title">Menu</div>
+    <nav class="sidebar-menu">
+        <a href="index.html#agents" class="sidebar-item">
+            <span class="sidebar-icon">👥</span>
+            <span class="sidebar-text">Agents</span>
+        </a>
+        <a href="index.html#blogs" class="sidebar-item">
+            <span class="sidebar-icon">📝</span>
+            <span class="sidebar-text">Blogs</span>
+        </a>
+        <a href="index.html#advertisement" class="sidebar-item">
+            <span class="sidebar-icon">📢</span>
+            <span class="sidebar-text">Advertisement</span>
+        </a>
+        <a href="index.html#area-guide" class="sidebar-item">
+            <span class="sidebar-icon">🗺️</span>
+            <span class="sidebar-text">Area Guide</span>
+        </a>
+        <a href="index.html#services" class="sidebar-item">
+            <span class="sidebar-icon">🔧</span>
+            <span class="sidebar-text">Services</span>
+        </a>
+        <a href="index.html#calculator" class="sidebar-item">
+            <span class="sidebar-icon">🧮</span>
+            <span class="sidebar-text">Mortgage Calculator</span>
+        </a>
+        <a href="locations.html" class="sidebar-item">
+            <span class="sidebar-icon">📋</span>
+            <span class="sidebar-text">Listings</span>
+        </a>
+        <a href="login.html" class="sidebar-item">
+            <span class="sidebar-icon">🔐</span>
+            <span class="sidebar-text">Login</span>
+        </a>
+    </nav>
+  </aside>
+
+  <main class="payment-page">
+    <header class="payment-header">
+      <h1>Pay for Property</h1>
+      <p class="muted">Choose a payment method and complete your transaction quickly.</p>
+    </header>
+
+    <section class="payment-card">
+      <form id="payForm" class="pay-form">
+        <div class="form-row">
+          <label>Property ID
+            <input name="propertyId" id="propertyIdInput" required placeholder="e.g. PROP-1023">
+          </label>
+          <label>Amount (NGN)
+            <input name="amount" id="amountInput" type="number" step="0.01" required placeholder="0.00">
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Your name
+            <input name="payerName" placeholder="Full name">
+          </label>
+
+          <label>Method
+            <select name="method" id="methodSelect">
+              <option value="card">Card</option>
+              <option value="crypto">Crypto</option>
+              <option value="bank">Bank Transfer</option>
+            </select>
+          </label>
+        </div>
+
+        <input type="hidden" name="bankName" id="bankName">
+
+        <div id="cryptoPanel" class="crypto-link-panel" aria-hidden="true" style="display: none;">
+          <h3>Prepare for Crypto Payment</h3>
+          <p class="crypto-panel-desc">To pay using cryptocurrency, you'll need to:</p>
+          <ol style="color: #DDE7F0; margin: 15px 0; padding-left: 20px;">
+            <li>Select a blockchain network (Ethereum, Bitcoin, Polygon, etc.)</li>
+            <li>Send funds to the provided wallet address</li>
+            <li>Confirm the transaction hash</li>
+          </ol>
+          <a href="#" id="cryptoPayBtn" class="crypto-proceed-btn">💎 Proceed to Crypto Payment</a>
+          <p style="color: #9AA4B2; font-size: 12px; margin-top: 12px;">You'll be able to create an invoice and then pay via crypto.</p>
+        </div>
+
+        <div id="bankAccountPanel" class="bank-account-panel" aria-hidden="true" aria-live="polite">
+          <div class="account-card">
+            <h4 id="accountBankName">Select a bank</h4>
+            <div class="account-detail">
+              <span class="label">Account Number:</span>
+              <span class="value" id="accountNumber">—</span>
+            </div>
+            <div class="account-detail">
+              <span class="label">Account Name:</span>
+              <span class="value" id="accountName">—</span>
+            </div>
+            <div class="account-detail">
+              <span class="label">Bank Code:</span>
+              <span class="value" id="bankCode">—</span>
+            </div>
+            <div class="copy-btn-group">
+              <button type="button" class="copy-btn" data-copy="accountNumber">Copy Account Number</button>
+              <button type="button" class="copy-btn" data-copy="accountName">Copy Account Name</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="bankPanel" class="bank-panel" aria-hidden="true">
+          <h3>Pay with a bank app</h3>
+          <div class="banks-grid">
+            <button type="button" class="bank-btn bank-gtb" data-bank="GTBank">GTBank</button>
+            <button type="button" class="bank-btn bank-access" data-bank="Access Bank">Access</button>
+            <button type="button" class="bank-btn bank-zenith" data-bank="Zenith Bank">Zenith</button>
+            <button type="button" class="bank-btn bank-first" data-bank="First Bank">FirstBank</button>
+            <button type="button" class="bank-btn bank-uba" data-bank="UBA">UBA</button>
+            <button type="button" class="bank-btn bank-fcmb" data-bank="FCMB">FCMB</button>
+            <button type="button" class="bank-btn bank-sterling" data-bank="Sterling Bank">Sterling</button>
+            <button type="button" class="bank-btn bank-pol" data-bank="Polaris Bank">Polaris</button>
+            <button type="button" class="bank-btn bank-ecobank" data-bank="Ecobank">Ecobank</button>
+            <button type="button" class="bank-btn bank-stanbic" data-bank="Stanbic IBTC">Stanbic</button>
+            <button type="button" class="bank-btn bank-union" data-bank="Union Bank">Union Bank</button>
+            <button type="button" class="bank-btn bank-wema" data-bank="Wema Bank">Wema Bank</button>
+            <button type="button" class="bank-btn bank-fidelity" data-bank="Fidelity Bank">Fidelity</button>
+            <button type="button" class="bank-btn bank-heritage" data-bank="Heritage Bank">Heritage</button>
+            <button type="button" class="bank-btn bank-bua" data-bank="BUA Group">BUA Group</button>
+            <button type="button" class="bank-btn bank-sc" data-bank="Standard Chartered">Std Chartered</button>
+            <div class="decor-card">
+              <div class="flower-3d" aria-hidden="true"></div>
+              <p class="small muted">A little flourish</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="property-preview" id="propertyPreview" aria-live="polite">
+          <div class="preview-inner">
+            <img id="previewImage" src="" alt="Property preview" />
+            <div class="preview-info">
+              <h4 id="previewTitle">No property selected</h4>
+              <p id="previewDesc">Enter a Property ID to see a preview. If available, image and details will show here.</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="form-actions">
+          <button type="submit" class="primary">Create Invoice</button>
+          <div id="result" class="result"></div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Sidebar Toggle Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebarToggle = document.getElementById("sidebarToggle");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarClose = document.getElementById("sidebarClose");
+
+      if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("active");
+        });
+
+        if (sidebarClose) {
+          sidebarClose.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+          });
+        }
+
+        document.querySelectorAll(".sidebar-item").forEach(item => {
+          item.addEventListener("click", function () {
+            sidebar.classList.remove("active");
+          });
+        });
+      }
+    });
+
+    const methodSelect = document.getElementById('methodSelect');
+    const bankPanel = document.getElementById('bankPanel');
+    const bankNameInput = document.getElementById('bankName');
+
+    function updateBankPanel() {
+      const show = methodSelect.value === 'bank';
+      bankPanel.style.display = show ? 'block' : 'none';
+      bankPanel.setAttribute('aria-hidden', show ? 'false' : 'true');
+      if (!show) {
+        bankNameInput.value = '';
+        accountPanel.style.display = 'none';
+        accountPanel.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    methodSelect.addEventListener('change', updateBankPanelVisibility);
+    updateBankPanelVisibility();
+
+    const bankAccounts = {
+      'GTBank': { account: '0120345678', name: 'Elrehsam Properties LTD', code: '058', color: '#0B6B3A' },
+      'Access Bank': { account: '0770123456', name: 'Elrehsam Properties LTD', code: '044', color: '#003366' },
+      'Zenith Bank': { account: '1014567890', name: 'Elrehsam Properties LTD', code: '057', color: '#1E2A78' },
+      'First Bank': { account: '3123456789', name: 'Elrehsam Properties LTD', code: '011', color: '#2E7D32' },
+      'UBA': { account: '1234567890', name: 'Elrehsam Properties LTD', code: '033', color: '#B71C1C' },
+      'FCMB': { account: '1234567890', name: 'Elrehsam Properties LTD', code: '035', color: '#0A3D62' },
+      'Sterling Bank': { account: '9123456789', name: 'Elrehsam Properties LTD', code: '232', color: '#6A1B9A' },
+      'Polaris Bank': { account: '5100123456', name: 'Elrehsam Properties LTD', code: '076', color: '#37474F' },
+      'Ecobank': { account: '5060890123', name: 'Elrehsam Properties LTD', code: '050', color: '#C1272D' },
+      'Stanbic IBTC': { account: '9021567890', name: 'Elrehsam Properties LTD', code: '221', color: '#003DA5' },
+      'Union Bank': { account: '0045123456', name: 'Elrehsam Properties LTD', code: '032', color: '#CA0B31' },
+      'Wema Bank': { account: '7012789012', name: 'Elrehsam Properties LTD', code: '035', color: '#0066CC' },
+      'Fidelity Bank': { account: '7010123456', name: 'Elrehsam Properties LTD', code: '070', color: '#1C3A70' },
+      'Heritage Bank': { account: '1000234567', name: 'Elrehsam Properties LTD', code: '030', color: '#1B4D3E' },
+      'BUA Group': { account: '1010234567', name: 'Elrehsam Properties LTD', code: '551', color: '#E31937' },
+      'Standard Chartered': { account: '9001123456', name: 'Elrehsam Properties LTD', code: '068', color: '#003D7A' }
+    };
+
+    const accountPanel = document.getElementById('bankAccountPanel');
+    const accountBankName = document.getElementById('accountBankName');
+    const accountNumber = document.getElementById('accountNumber');
+    const accountName = document.getElementById('accountName');
+    const bankCodeEl = document.getElementById('bankCode');
+
+    function updateBankAccount(bankName) {
+      const account = bankAccounts[bankName];
+      if (account) {
+        accountBankName.textContent = bankName;
+        accountNumber.textContent = account.account;
+        accountName.textContent = account.name;
+        bankCodeEl.textContent = account.code;
+        accountPanel.style.display = 'block';
+        accountPanel.setAttribute('aria-hidden', 'false');
+      } else {
+        accountPanel.style.display = 'none';
+        accountPanel.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    document.querySelectorAll('.bank-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.bank-btn').forEach(b=>b.classList.remove('selected'));
+        btn.classList.add('selected');
+        const selectedBank = btn.dataset.bank;
+        bankNameInput.value = selectedBank;
+        updateBankAccount(selectedBank);
+      });
+    });
+
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const fieldId = btn.dataset.copy;
+        const text = document.getElementById(fieldId).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = '✓ Copied!';
+          setTimeout(() => btn.textContent = originalText, 2000);
+        });
+      });
+    });
+
+    function updateBankPanelVisibility() {
+      updateBankAccount('');
+      updateBankPanel();
+    }
+
+    const propertyIdInput = document.querySelector('input[name="propertyId"]');
+    const previewImage = document.getElementById('previewImage');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewDesc = document.getElementById('previewDesc');
+    const amountInput = document.getElementById('amountInput');
+
+    // Auto-populate from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const propertyIdFromUrl = urlParams.get('propertyId');
+    if (propertyIdFromUrl) {
+      propertyIdInput.value = propertyIdFromUrl;
+      updatePropertyPreview(propertyIdFromUrl);
+    }
+
+    async function updatePropertyPreview(propId) {
+      if (!propId) {
+        previewTitle.textContent = 'No property selected';
+        previewDesc.textContent = 'Enter a Property ID to see a preview.';
+        previewImage.src = '';
+        amountInput.value = '';
+        return;
+      }
+      try {
+        const res = await fetch(`/api/properties/${propId}`);
+        if (res.ok) {
+          const prop = await res.json();
+          previewTitle.textContent = prop.name || prop.title || propId;
+          previewDesc.textContent = prop.location || prop.address || 'Property details not available';
+          previewImage.src = prop.image || 'https://via.placeholder.com/350x200?text=No+Image';
+          if (prop.price) {
+            const priceNum = parseInt(prop.price.replace(/[^0-9]/g, '')); 
+            amountInput.value = priceNum;
+          }
+        } else {
+          previewTitle.textContent = propId;
+          previewDesc.textContent = 'Property details not found';
+          previewImage.src = 'https://via.placeholder.com/350x200?text=Not+Found';
+          amountInput.value = '';
+        }
+      } catch (e) {
+        previewTitle.textContent = propId;
+        previewDesc.textContent = 'Error loading property details';
+        previewImage.src = 'https://via.placeholder.com/350x200?text=Error';
+        amountInput.value = '';
+      }
+    }
+
+    propertyIdInput.addEventListener('input', (e) => updatePropertyPreview(e.target.value));
+    updatePropertyPreview('');
+
+    // Crypto panel handling
+    const cryptoPanel = document.getElementById('cryptoPanel');
+    const cryptoPayBtn = document.getElementById('cryptoPayBtn');
+
+    methodSelect.addEventListener('change', () => {
+      if (methodSelect.value === 'crypto') {
+        cryptoPanel.style.display = 'block';
+        cryptoPanel.setAttribute('aria-hidden', 'false');
+        bankPanel.style.display = 'none';
+        bankPanel.setAttribute('aria-hidden', 'true');
+      } else {
+        cryptoPanel.style.display = 'none';
+        cryptoPanel.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    cryptoPayBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const propId = propertyIdInput.value || '';
+      const amount = amountInput.value || '';
+      window.location.href = `crypto.html?propertyId=${propId}&amount=${amount}`;
+    });
+
+    document.getElementById('payForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      
+      if (methodSelect.value === 'crypto') {
+        alert('Please use the "Proceed to Crypto Payment" button to continue');
+        return;
+      }
+
+      const fd = new FormData(e.target);
+      const body = {
+        propertyId: fd.get('propertyId'),
+        amount: fd.get('amount'),
+        payerName: fd.get('payerName'),
+        method: fd.get('method'),
+        bankName: fd.get('bankName')
+      };
+      const res = await fetch('/api/payments/create-invoice', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body)
+      });
+      const data = await res.json();
+      const resultEl = document.getElementById('result');
+      if (res.ok) {
+        resultEl.innerHTML = `Invoice created: <a href="/invoice?invoiceId=${data.invoiceId}">${data.invoiceId}</a>`;
+        if (methodSelect.value === 'crypto') {
+          setTimeout(() => {
+            window.location.href = `crypto.html?propertyId=${fd.get('propertyId')}&invoiceId=${data.invoiceId}`;
+          }, 2000);
+        }
+      } else {
+        resultEl.textContent = data.error || 'Error';
+      }
+    });
+  </script>
+</body>
+</html>

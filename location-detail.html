@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Properties - ElrehSam Homes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .location-detail-container {
+            padding: 60px 40px;
+            background: #0F172A;
+            min-height: 100vh;
+        }
+
+        .location-detail-header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .location-detail-header h1 {
+            font-size: 42px;
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb {
+            color: #9AA4B2;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .properties-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .property-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .property-showcase-card {
+            background: #1E293B;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+
+        .property-showcase-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.3);
+        }
+
+        .property-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .property-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .property-showcase-card:hover .property-image {
+            transform: scale(1.05);
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #D4AF37;
+            color: black;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .property-gallery-info {
+            padding: 20px;
+        }
+
+        .property-gallery-info h3 {
+            color: #D4AF37;
+            margin-bottom: 8px;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .prop-desc {
+            color: #B0B8C1;
+            font-size: 13px;
+            margin: 8px 0 12px 0;
+        }
+
+        .prop-id {
+            color: #9AA4B2;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .prop-location {
+            color: #B0B8C1;
+            font-size: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .prop-map {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .property-gallery-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-details-gallery, .btn-pay-gallery {
+            flex: 1;
+            padding: 10px 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 13px;
+        }
+
+        .btn-details-gallery {
+            background: #1E293B;
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+        }
+
+        .btn-details-gallery:hover {
+            background: #D4AF37;
+            color: black;
+        }
+
+        .btn-pay-gallery {
+            background: #D4AF37;
+            color: black;
+        }
+
+        .btn-pay-gallery:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .location-detail-container {
+                padding: 30px 20px;
+            }
+
+            .location-detail-header h1 {
+                font-size: 28px;
+            }
+
+            .property-showcase {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="location-detail.html">Location Detail</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="invoice.html">Invoice</a></li>
+            <li><a href="crypto.html">Crypto</a></li>
+            <li><a href="index.html#properties">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="location-detail-container">
+        <div class="properties-container">
+            <a href="locations.html" class="back-link">← Back to Locations</a>
+
+            <div class="location-detail-header">
+                <h1 id="locationTitle">Properties</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> / <a href="locations.html">Locations</a> / <span id="breadcrumbLocation">Properties</span>
+                </div>
+            </div>
+
+            <div class="property-showcase" id="propertiesShowcase"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="properties-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const location = urlParams.get('location');
+
+            if (!location) {
+                document.getElementById('propertiesShowcase').innerHTML = '<p>Invalid location</p>';
+                return;
+            }
+
+            document.getElementById('locationTitle').textContent = location;
+            document.getElementById('breadcrumbLocation').textContent = location;
+            document.title = `${location} - ElrehSam Homes`;
+
+            const properties = getPropertiesByLocation(location);
+            const showcase = document.getElementById('propertiesShowcase');
+
+            if (properties.length === 0) {
+                showcase.innerHTML = '<p>No properties found in this location.</p>';
+                return;
+            }
+
+            showcase.innerHTML = properties.map(prop => `
+                <div class="property-showcase-card">
+                    <div class="property-image-container">
+                        <img src="${prop.image}" alt="${prop.desc}" class="property-image">
+                        <div class="price-tag">${prop.price}</div>
+                    </div>
+                    <div class="property-gallery-info">
+                        <div class="prop-id">${prop.id}</div>
+                        <h3>${prop.desc}</h3>
+                        <div class="prop-location">📍 ${prop.location}</div>
+                        <iframe class="prop-map" src="https://maps.google.com/maps?q=${prop.lat},${prop.lng}&z=15&output=embed"></iframe>
+                        <div class="property-gallery-buttons">
+                            <button class="btn-details-gallery" onclick="alert('More details: ${prop.desc}')">Details</button>
+                            <a href="payment.html?propertyId=${prop.id}" class="btn-pay-gallery">Pay Now</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        });
+    </script>
+</body>
+</html>

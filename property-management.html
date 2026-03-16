@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Management - ElrehSam Homes & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .management-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+
+        .management-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .management-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .management-header p {
+            color: #B0B8C1;
+            font-size: 16px;
+        }
+
+        .management-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .management-service-card {
+            background: #1E293B;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .management-service-card:hover {
+            background: #0B1220;
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .management-service-card h3 {
+            font-size: 22px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .management-service-icon {
+            font-size: 28px;
+        }
+
+        .management-service-card p {
+            color: #B0B8C1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .management-service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .management-service-card li {
+            color: #DDE7F0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .management-service-card li:last-child {
+            border-bottom: none;
+        }
+
+        .management-service-card li:before {
+            content: "✓ ";
+            color: #D4AF37;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .features-section {
+            background: #1E293B;
+            border-left: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .features-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            padding: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+        }
+
+        .feature-item h4 {
+            color: #D4AF37;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: #B0B8C1;
+            font-size: 14px;
+        }
+
+        .process-section {
+            background: #1E293B;
+            border-right: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .process-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            background: #0B1220;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 32px;
+            color: #D4AF37;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            color: #DDE7F0;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #9AA4B2;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #D4AF37 0%, #c4945f 100%);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: #0B1220;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #0B1220;
+            color: #D4AF37;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #0B1220;
+        }
+
+        @media (max-width: 768px) {
+            .management-container {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            .management-header h1 {
+                font-size: 28px;
+            }
+
+            .process-steps,
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Home</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📍</span>
+                <span class="sidebar-text">Locations</span>
+            </a>
+            <a href="property-management.html" class="sidebar-item">
+                <span class="sidebar-icon">🛠️</span>
+                <span class="sidebar-text">Property Management</span>
+            </a>
+            <a href="property-sales.html" class="sidebar-item">
+                <span class="sidebar-icon">💰</span>
+                <span class="sidebar-text">Property Sales</span>
+            </a>
+            <a href="rental-services.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Rental Services</span>
+            </a>
+            <a href="investment.html" class="sidebar-item">
+                <span class="sidebar-icon">📈</span>
+                <span class="sidebar-text">Investment</span>
+            </a>
+            <a href="payment.html" class="sidebar-item">
+                <span class="sidebar-icon">💳</span>
+                <span class="sidebar-text">Payment</span>
+            </a>
+            <a href="contact.html" class="sidebar-item">
+                <span class="sidebar-icon">✉️</span>
+                <span class="sidebar-text">Contact</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="property-management.html">Property Management</a></li>
+            <li><a href="property-sales.html">Property Sales</a></li>
+            <li><a href="rental-services.html">Rental Services</a></li>
+            <li><a href="investment.html">Investment</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Property Management Content -->
+    <div class="management-container">
+        <div class="management-header">
+            <h1>Property Management</h1>
+            <p>Comprehensive property management services for residential and commercial properties</p>
+        </div>
+
+        <!-- Service Cards -->
+        <div class="management-services-grid">
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">🏘️</span> Residential Management</h3>
+                <p>Complete management solutions for residential properties.</p>
+                <ul>
+                    <li>Tenant screening</li>
+                    <li>Lease enforcement</li>
+                    <li>Rent collection</li>
+                    <li>Maintenance coordination</li>
+                </ul>
+            </div>
+
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">🏢</span> Commercial Management</h3>
+                <p>Professional management for commercial properties and offices.</p>
+                <ul>
+                    <li>Tenant relations</li>
+                    <li>Building operations</li>
+                    <li>Vendor management</li>
+                    <li>Lease compliance</li>
+                </ul>
+            </div>
+
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">🔧</span> Maintenance Services</h3>
+                <p>Preventive and corrective maintenance for all property types.</p>
+                <ul>
+                    <li>Regular inspections</li>
+                    <li>Emergency repairs</li>
+                    <li>Vendor coordination</li>
+                    <li>Maintenance scheduling</li>
+                </ul>
+            </div>
+
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">💰</span> Financial Management</h3>
+                <p>Transparent accounting and financial reporting services.</p>
+                <ul>
+                    <li>Rent collection</li>
+                    <li>Expense management</li>
+                    <li>Financial reporting</li>
+                    <li>Tax preparation support</li>
+                </ul>
+            </div>
+
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">📞</span> Tenant Services</h3>
+                <p>24/7 tenant support and communication.</p>
+                <ul>
+                    <li>Complaint handling</li>
+                    <li>Maintenance requests</li>
+                    <li>Emergency support</li>
+                    <li>Dispute resolution</li>
+                </ul>
+            </div>
+
+            <div class="management-service-card">
+                <h3><span class="management-service-icon">📊</span> Property Analytics</h3>
+                <p>Data-driven insights for property performance optimization.</p>
+                <ul>
+                    <li>Performance reports</li>
+                    <li>Market analysis</li>
+                    <li>Vacancy management</li>
+                    <li>ROI optimization</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2>Why Choose ElrehSam for Property Management?</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h4>✨ Professional Excellence</h4>
+                    <p>Experienced team with deep knowledge of property management best practices.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⏰ 24/7 Availability</h4>
+                    <p>Round-the-clock support for tenants and property emergencies.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💼 Transparent Communication</h4>
+                    <p>Regular updates via online portal with detailed financial reports.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🛡️ Legal Compliance</h4>
+                    <p>Ensure all operations comply with local laws and regulations.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎯 Tenant Retention</h4>
+                    <p>Strategies to maintain quality tenants and reduce vacancy rates.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💎 Maximized Returns</h4>
+                    <p>Optimize property performance and increase your investment returns.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Section -->
+        <div class="process-section">
+            <h2>Our Management Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Assessment</h4>
+                    <p>Evaluate property condition and current situation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Action Plan</h4>
+                    <p>Create customized management strategy</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Implementation</h4>
+                    <p>Execute management services and systems</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Monitoring</h4>
+                    <p>Continuous oversight and quality assurance</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Reporting</h4>
+                    <p>Detailed financial and operational reports</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Optimization</h4>
+                    <p>Continuous improvements for better returns</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Let Us Manage Your Property</h2>
+            <p>Reduce stress and increase returns with professional property management</p>
+            <a href="contact.html" class="cta-btn">Get Started Today</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Investment Consultation - ElrehSam Homes & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .investment-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+
+        .investment-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .investment-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .investment-header p {
+            color: #B0B8C1;
+            font-size: 16px;
+        }
+
+        .investment-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .investment-service-card {
+            background: #1E293B;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .investment-service-card:hover {
+            background: #0B1220;
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .investment-service-card h3 {
+            font-size: 22px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .investment-service-icon {
+            font-size: 28px;
+        }
+
+        .investment-service-card p {
+            color: #B0B8C1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .investment-service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .investment-service-card li {
+            color: #DDE7F0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .investment-service-card li:last-child {
+            border-bottom: none;
+        }
+
+        .investment-service-card li:before {
+            content: "✓ ";
+            color: #D4AF37;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .investment-types-section {
+            background: #1E293B;
+            border-left: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .investment-types-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .investment-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .investment-type {
+            background: #0B1220;
+            padding: 20px;
+            border-radius: 8px;
+            border-bottom: 3px solid #D4AF37;
+        }
+
+        .investment-type h4 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .investment-type p {
+            color: #9AA4B2;
+            font-size: 14px;
+        }
+
+        .returns-section {
+            background: linear-gradient(135deg, #1E293B 0%, #0B1220 100%);
+            border-right: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .returns-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .returns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .return-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .return-item h4 {
+            color: #D4AF37;
+            margin-bottom: 8px;
+        }
+
+        .return-percentage {
+            font-size: 24px;
+            color: #D4AF37;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .return-item p {
+            color: #B0B8C1;
+            font-size: 13px;
+        }
+
+        .process-section {
+            background: #1E293B;
+            border-left: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .process-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            background: #0B1220;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 32px;
+            color: #D4AF37;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            color: #DDE7F0;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #9AA4B2;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #D4AF37 0%, #c4945f 100%);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: #0B1220;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #0B1220;
+            color: #D4AF37;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #0B1220;
+        }
+
+        @media (max-width: 768px) {
+            .investment-container {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            .investment-header h1 {
+                font-size: 28px;
+            }
+
+            .process-steps,
+            .investment-types-grid,
+            .returns-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Home</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📍</span>
+                <span class="sidebar-text">Locations</span>
+            </a>
+            <a href="property-management.html" class="sidebar-item">
+                <span class="sidebar-icon">🛠️</span>
+                <span class="sidebar-text">Property Management</span>
+            </a>
+            <a href="property-sales.html" class="sidebar-item">
+                <span class="sidebar-icon">💰</span>
+                <span class="sidebar-text">Property Sales</span>
+            </a>
+            <a href="rental-services.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Rental Services</span>
+            </a>
+            <a href="investment.html" class="sidebar-item">
+                <span class="sidebar-icon">📈</span>
+                <span class="sidebar-text">Investment</span>
+            </a>
+            <a href="payment.html" class="sidebar-item">
+                <span class="sidebar-icon">💳</span>
+                <span class="sidebar-text">Payment</span>
+            </a>
+            <a href="contact.html" class="sidebar-item">
+                <span class="sidebar-icon">✉️</span>
+                <span class="sidebar-text">Contact</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="property-management.html">Property Management</a></li>
+            <li><a href="property-sales.html">Property Sales</a></li>
+            <li><a href="rental-services.html">Rental Services</a></li>
+            <li><a href="investment.html">Investment</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Investment Content -->
+    <div class="investment-container">
+        <div class="investment-header">
+            <h1>Investment Consultation</h1>
+            <p>Build wealth through strategic real estate investments with expert guidance and market insights</p>
+        </div>
+
+        <!-- Service Cards -->
+        <div class="investment-services-grid">
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">🎯</span> Portfolio Analysis</h3>
+                <p>Develop a diversified investment portfolio aligned with your goals.</p>
+                <ul>
+                    <li>Risk assessment</li>
+                    <li>Goal setting</li>
+                    <li>Asset allocation</li>
+                    <li>Diversification strategies</li>
+                </ul>
+            </div>
+
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">📊</span> Market Research</h3>
+                <p>In-depth analysis of property markets and investment trends.</p>
+                <ul>
+                    <li>Market trends analysis</li>
+                    <li>Growth projections</li>
+                    <li>Competitive analysis</li>
+                    <li>Demographic studies</li>
+                </ul>
+            </div>
+
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">💼</span> Investment Planning</h3>
+                <p>Custom investment strategies tailored to your financial objectives.</p>
+                <ul>
+                    <li>Long-term planning</li>
+                    <li>Cash flow projections</li>
+                    <li>ROI calculations</li>
+                    <li>Financing options</li>
+                </ul>
+            </div>
+
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">🏗️</span> Development Opportunities</h3>
+                <p>Pre-launch access to promising development projects.</p>
+                <ul>
+                    <li>Ground-floor opportunities</li>
+                    <li>Pre-construction pricing</li>
+                    <li>Developer partnerships</li>
+                    <li>Growth potential assets</li>
+                </ul>
+            </div>
+
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">⚖️</span> Due Diligence</h3>
+                <p>Comprehensive property inspection and legal verification.</p>
+                <ul>
+                    <li>Title verification</li>
+                    <li>Property inspection</li>
+                    <li>Legal review</li>
+                    <li>Risk assessment</li>
+                </ul>
+            </div>
+
+            <div class="investment-service-card">
+                <h3><span class="investment-service-icon">📞</span> Ongoing Support</h3>
+                <p>Continuous monitoring and optimization of your investments.</p>
+                <ul>
+                    <li>Performance tracking</li>
+                    <li>Strategy adjustments</li>
+                    <li>Tax optimization</li>
+                    <li>Exit planning</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Investment Types Section -->
+        <div class="investment-types-section">
+            <h2>Investment Types</h2>
+            <div class="investment-types-grid">
+                <div class="investment-type">
+                    <h4>🏘️ Residential</h4>
+                    <p>Single family homes, apartments, and multi-unit residential properties.</p>
+                </div>
+                <div class="investment-type">
+                    <h4>🏢 Commercial</h4>
+                    <p>Office spaces, retail centers, and business properties.</p>
+                </div>
+                <div class="investment-type">
+                    <h4>🏭 Industrial</h4>
+                    <p>Warehouses, manufacturing facilities, and logistics centers.</p>
+                </div>
+                <div class="investment-type">
+                    <h4>🌾 Land</h4>
+                    <p>Raw land and development-ready parcels with growth potential.</p>
+                </div>
+                <div class="investment-type">
+                    <h4>🏢 Mixed-Use</h4>
+                    <p>Properties combining residential, commercial, and retail spaces.</p>
+                </div>
+                <div class="investment-type">
+                    <h4>🌳 Special Projects</h4>
+                    <p>Resort properties, eco-friendly developments, and niche investments.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected Returns Section -->
+        <div class="returns-section">
+            <h2>Expected Returns & Performance</h2>
+            <div class="returns-grid">
+                <div class="return-item">
+                    <h4>Residential</h4>
+                    <div class="return-percentage">8-12%</div>
+                    <p>Annual average return on residential properties</p>
+                </div>
+                <div class="return-item">
+                    <h4>Commercial</h4>
+                    <div class="return-percentage">10-15%</div>
+                    <p>Annual average return on commercial properties</p>
+                </div>
+                <div class="return-item">
+                    <h4>Land Investment</h4>
+                    <div class="return-percentage">12-20%</div>
+                    <p>Long-term appreciation potential</p>
+                </div>
+                <div class="return-item">
+                    <h4>Development</h4>
+                    <div class="return-percentage">15-25%</div>
+                    <p>Returns from development projects</p>
+                </div>
+            </div>
+            <p style="color: #B0B8C1; margin-top: 20px; text-align: center; font-size: 14px;">
+                *Returns are historical averages and not guaranteed. Actual returns depend on market conditions, location, and management.
+            </p>
+        </div>
+
+        <!-- Process Section -->
+        <div class="process-section">
+            <h2>Our Investment Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Consultation</h4>
+                    <p>Understand your goals and investment experience</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Analysis</h4>
+                    <p>Market research and opportunity identification</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Planning</h4>
+                    <p>Develop personalized investment strategy</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Due Diligence</h4>
+                    <p>Complete property and legal verification</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Acquisition</h4>
+                    <p>Facilitate purchase and documentation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Management</h4>
+                    <p>Ongoing monitoring and optimization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Start Your Investment Journey</h2>
+            <p>Our expert consultants are ready to help you build a profitable real estate portfolio</p>
+            <a href="contact.html" class="cta-btn">Schedule a Free Consultation</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

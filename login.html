@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - ElrehSam Homes & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            color: #000;
+        }
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .login-container input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .login-container input:focus {
+            outline: none;
+            border-color: #d4a574;
+            box-shadow: 0 0 5px rgba(212, 165, 116, 0.2);
+        }
+        .login-container button {
+            padding: 12px;
+            background: #d4a574;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-container button:hover {
+            background: #c4945f;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Home</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📍</span>
+                <span class="sidebar-text">Locations</span>
+            </a>
+            <a href="location-detail.html" class="sidebar-item">
+                <span class="sidebar-icon">🔎</span>
+                <span class="sidebar-text">Location Detail</span>
+            </a>
+            <a href="payment.html" class="sidebar-item">
+                <span class="sidebar-icon">💳</span>
+                <span class="sidebar-text">Payment</span>
+            </a>
+            <a href="invoice.html" class="sidebar-item">
+                <span class="sidebar-icon">🧾</span>
+                <span class="sidebar-text">Invoice</span>
+            </a>
+            <a href="crypto.html" class="sidebar-item">
+                <span class="sidebar-icon">💰</span>
+                <span class="sidebar-text">Crypto</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <span class="sidebar-icon">📋</span>
+                <span class="sidebar-text">Gallery</span>
+            </a>
+            <a href="contact.html" class="sidebar-item">
+                <span class="sidebar-icon">✉️</span>
+                <span class="sidebar-text">Contact</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- same SVG as index -->
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="location-detail.html">Location Detail</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="invoice.html">Invoice</a></li>
+            <li><a href="crypto.html">Crypto</a></li>
+            <li><a href="#properties">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <section class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="email" name="email" id="loginEmail" placeholder="Email" required />
+            <input type="password" name="password" id="loginPassword" placeholder="Password" required />
+            <button type="submit">Sign In</button>
+        </form>
+        <div id="loginStatus" style="margin-top:12px; text-align:center;"></div>
+    </section>
+
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Crypto Payment - ElrehSam Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .crypto-page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #0F172A;
+    }
+
+    .crypto-container {
+      flex: 1;
+      padding: 60px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .crypto-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .crypto-header h1 {
+      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .crypto-header p {
+      color: #9AA4B2;
+      font-size: 16px;
+    }
+
+    .crypto-breadcrumb {
+      color: #9AA4B2;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .crypto-breadcrumb a {
+      color: #D4AF37;
+      text-decoration: none;
+    }
+
+    .crypto-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .crypto-form-section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,0.15);
+      margin-bottom: 40px;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #DDE7F0;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .network-selector-section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,0.15);
+      margin-bottom: 40px;
+    }
+
+    .network-selector-section h3 {
+      color: #DDE7F0;
+      font-size: 18px;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .network-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .network-btn {
+      padding: 14px;
+      border: 2px solid rgba(212,175,55,0.3);
+      background: rgba(30,41,59,0.8);
+      color: #DDE7F0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 13px;
+    }
+
+    .network-btn:hover {
+      border-color: #D4AF37;
+      background: rgba(212,175,55,0.1);
+    }
+
+    .network-btn.selected {
+      background: #D4AF37;
+      color: black;
+      border-color: #D4AF37;
+    }
+
+    .wallet-info {
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 3px solid #D4AF37;
+      display: none;
+    }
+
+    .wallet-info.show {
+      display: block;
+    }
+
+    .wallet-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .wallet-detail:last-child {
+      border-bottom: none;
+    }
+
+    .wallet-label {
+      color: #9AA4B2;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .wallet-value {
+      color: #DDE7F0;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      font-size: 12px;
+      word-break: break-all;
+      max-width: 400px;
+    }
+
+    .copy-wallet-btn {
+      background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.08));
+      color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      margin-top: 14px;
+    }
+
+    .copy-wallet-btn:hover {
+      background: linear-gradient(135deg, rgba(212,175,55,0.35), rgba(212,175,55,0.15));
+      border-color: rgba(212,175,55,0.5);
+    }
+
+    .tx-submit-section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid rgba(212,175,55,0.15);
+      margin-bottom: 40px;
+    }
+
+    .tx-submit-section h3 {
+      color: #DDE7F0;
+      font-size: 18px;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .submit-btn {
+      background: #D4AF37;
+      color: black;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: white;
+    }
+
+    .result-message {
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .result-message.show {
+      display: block;
+    }
+
+    .result-success {
+      background: rgba(76, 175, 80, 0.15);
+      color: #4CAF50;
+      border: 1px solid rgba(76, 175, 80, 0.3);
+    }
+
+    .result-error {
+      background: rgba(244, 67, 54, 0.15);
+      color: #F44336;
+      border: 1px solid rgba(244, 67, 54, 0.3);
+    }
+
+    .network-description {
+      color: #9AA4B2;
+      font-size: 13px;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* supported networks text list */
+    .supported-networks {
+      margin: 20px 0 30px;
+      color: #E0E7FF;
+    }
+    .supported-networks h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .supported-networks ul {
+      list-style: disc inside;
+      margin-left: 20px;
+    }
+    .supported-networks li {
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+    }
+    .network-logo {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .crypto-container {
+        padding: 30px 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .crypto-header h1 {
+        font-size: 24px;
+      }
+
+      .network-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="crypto-page-wrapper">
+    <!-- Navbar -->
+    <nav>
+      <div class="logo-container">
+        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+          <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+          <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+          <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+          <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+          <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+        </svg>
+        <span class="logo-text">ElrehSam Homes</span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="locations.html">Locations</a></li>
+        <li><a href="location-detail.html">Location Detail</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li><a href="invoice.html">Invoice</a></li>
+        <li><a href="crypto.html">Crypto</a></li>
+        <li><a href="#properties">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="login-btn"><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+
+    <div class="crypto-container">
+      <div class="crypto-breadcrumb">
+        <a href="index.html">Home</a> / <a href="payment.html">Payment</a> / Crypto
+      </div>
+
+      <div class="crypto-header">
+        <h1>Cryptocurrency Payment</h1>
+        <p>Secure payments via blockchain networks</p>
+      </div>
+
+      <!-- Supported networks list -->
+      <div class="supported-networks">
+        <h3>Available Blockchain Networks</h3>
+        <ul>
+          <li><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=024" alt="BTC" class="network-logo"/> Bitcoin (BTC)</li>
+          <li><img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=024" alt="ETH" class="network-logo"/> Ethereum (ETH)</li>
+          <li><img src="https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=024" alt="BSC" class="network-logo"/> Binance Smart Chain (BSC)</li>
+          <li><img src="https://cryptologos.cc/logos/polygon-matic-logo.svg?v=024" alt="MATIC" class="network-logo"/> Polygon (MATIC)</li>
+          <li><img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=024" alt="SOL" class="network-logo"/> Solana (SOL)</li>
+          <li><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg?v=024" alt="LTC" class="network-logo"/> Litecoin (LTC)</li>
+        </ul>
+      </div>
+
+      <!-- Property & Amount Info -->
+      <div class="crypto-form-section">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property ID</label>
+            <input type="text" name="propertyId" id="propertyId" placeholder="e.g. PROP-001" />
+          </div>
+          <div class="form-group">
+            <label>Amount (USD equivalent)</label>
+            <input type="number" name="amount" id="amount" placeholder="Enter amount" step="0.01" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Invoice ID</label>
+          <input type="text" name="invoiceId" id="invoiceId" placeholder="Enter invoice ID from payment page" />
+        </div>
+      </div>
+
+      <!-- Network Selection -->
+      <div class="network-selector-section">
+        <h3>Select Blockchain Network</h3>
+        <div class="network-buttons">
+          <button type="button" class="network-btn" data-network="ethereum">Ethereum (ETH)</button>
+          <button type="button" class="network-btn" data-network="bitcoin">Bitcoin (BTC)</button>
+          <button type="button" class="network-btn" data-network="binance">Binance Smart Chain</button>
+          <button type="button" class="network-btn" data-network="polygon">Polygon (MATIC)</button>
+          <button type="button" class="network-btn" data-network="solana">Solana (SOL)</button>
+          <button type="button" class="network-btn" data-network="litecoin">Litecoin (LTC)</button>
+        </div>
+
+        <!-- Wallet Information -->
+        <div class="wallet-info" id="walletInfo">
+          <div class="wallet-detail">
+            <span class="wallet-label">Network:</span>
+            <span class="wallet-value" id="networkName">—</span>
+          </div>
+          <div class="wallet-detail">
+            <span class="wallet-label">Wallet Address:</span>
+            <span class="wallet-value" id="walletAddress">—</span>
+          </div>
+          <div class="wallet-detail">
+            <span class="wallet-label">Min Amount:</span>
+            <span class="wallet-value" id="minAmount">—</span>
+          </div>
+          <div class="wallet-detail">
+            <span class="wallet-label">Network Fee:</span>
+            <span class="wallet-value" id="networkFee">—</span>
+          </div>
+          <button type="button" class="copy-wallet-btn" id="copyBtn">📋 Copy Wallet Address</button>
+          <div class="network-description" id="networkDesc"></div>
+        </div>
+      </div>
+
+      <!-- Transaction Confirmation -->
+      <div class="tx-submit-section">
+        <h3>Transaction Details</h3>
+        <div class="form-group">
+          <label>Transaction Hash/ID</label>
+          <input type="text" name="txHash" id="txHash" placeholder="Enter transaction hash after sending funds" />
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Confirm Payment</button>
+        <div class="result-message" id="resultMessage"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+  </footer>
+
+  <script src="properties-data.js"></script>
+  <script>
+    const cryptoNetworks = {
+      ethereum: {
+        name: 'Ethereum (ETH)',
+        wallet: '0x742d35Cc6634C0532925a3b844Bc9e7595f42bE',
+        minAmount: '0.01 ETH',
+        fee: '5-15 USD',
+        desc: 'Send Ethereum directly to the wallet. Most widely used blockchain for payments.'
+      },
+      bitcoin: {
+        name: 'Bitcoin (BTC)',
+        wallet: '1A1z7agoat2LWSRN3c8p7Gx7aR4EJP3xJM',
+        minAmount: '0.0005 BTC',
+        fee: '2-5 USD',
+        desc: 'Send Bitcoin to complete your transaction. The most secure and decentralized network.'
+      },
+      binance: {
+        name: 'Binance Smart Chain (BNB)',
+        wallet: '0x8e7f8e1E1c2c1c1c1c1c1c1c1c1c1c1c1c1c1c1c',
+        minAmount: '0.05 BNB',
+        fee: '0.5-2 USD',
+        desc: 'Fast and low-cost transactions on the BSC network. Excellent for quick payments.'
+      },
+      polygon: {
+        name: 'Polygon (MATIC)',
+        wallet: '0x3c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c1c',
+        minAmount: '10 MATIC',
+        fee: '0.1-0.5 USD',
+        desc: 'Ultra-low fees and fast transactions on Polygon network. Ideal for economical payments.'
+      },
+      solana: {
+        name: 'Solana (SOL)',
+        wallet: '9Z5KXYzBcJ7GQ5K2bHnZ3c6xU4n8Y6vPzW5bQ3xN2mL',
+        minAmount: '0.1 SOL',
+        fee: '0.05-0.25 USD',
+        desc: 'Lightning-fast transactions with minimal fees. One of the fastest blockchains.'
+      },
+      litecoin: {
+        name: 'Litecoin (LTC)',
+        wallet: 'LhLu7pP5v1B6K9x3N4Zq1Y2Qr3S9T5U8V2W6X7Y3Z',
+        minAmount: '0.01 LTC',
+        fee: '1-3 USD',
+        desc: 'Fast and lightweight with lower fees. Great alternative to Bitcoin.'
+      }
+    };
+
+    // Network button handling
+    document.querySelectorAll('.network-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.network-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        const network = btn.dataset.network;
+        const info = cryptoNetworks[network];
+
+        document.getElementById('networkName').textContent = info.name;
+        document.getElementById('walletAddress').textContent = info.wallet;
+        document.getElementById('minAmount').textContent = info.minAmount;
+        document.getElementById('networkFee').textContent = info.fee;
+        document.getElementById('networkDesc').textContent = info.desc;
+
+        document.getElementById('walletInfo').classList.add('show');
+      });
+    });
+
+    // Copy wallet address
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const address = document.getElementById('walletAddress').textContent;
+      if (address && address !== '—') {
+        navigator.clipboard.writeText(address).then(() => {
+          const btn = document.getElementById('copyBtn');
+          const originalText = btn.textContent;
+          btn.textContent = '✓ Copied!';
+          setTimeout(() => btn.textContent = originalText, 2000);
+        });
+      }
+    });
+
+    // Submit transaction
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const invoiceId = document.getElementById('invoiceId').value;
+      const txHash = document.getElementById('txHash').value;
+      const propertyId = document.getElementById('propertyId').value;
+      const resultDiv = document.getElementById('resultMessage');
+
+      if (!invoiceId || !txHash) {
+        resultDiv.textContent = 'Please fill in Invoice ID and Transaction Hash';
+        resultDiv.className = 'result-message show result-error';
+        return;
+      }
+
+      try {
+        const body = {
+          invoiceId,
+          txHash,
+          propertyId,
+          paymentMethod: 'crypto'
+        };
+
+        const res = await fetch('/api/payments/crypto-webhook', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          resultDiv.textContent = '✓ Payment confirmed! Transaction recorded on blockchain.';
+          resultDiv.className = 'result-message show result-success';
+          setTimeout(() => window.location.href = 'payment.html', 3000);
+        } else {
+          resultDiv.textContent = data.error || 'Error processing payment';
+          resultDiv.className = 'result-message show result-error';
+        }
+      } catch (error) {
+        resultDiv.textContent = 'Error: ' + error.message;
+        resultDiv.className = 'result-message show result-error';
+      }
+    });
+
+    // Auto-populate from payment page
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      const propId = params.get('propertyId');
+      if (propId) {
+        document.getElementById('propertyId').value = propId;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Locations - ElrehSam Homes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .locations-container {
+            padding: 60px 40px;
+            background: #0F172A;
+            min-height: 100vh;
+        }
+
+        .locations-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .locations-header h1 {
+            font-size: 42px;
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .locations-header p {
+            color: #9AA4B2;
+            font-size: 16px;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-card {
+            background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9));
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212,175,55,0.2);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .location-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212,175,55,0.3);
+            border-color: rgba(212,175,55,0.5);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .location-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .location-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .property-count {
+            color: #9AA4B2;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .view-btn {
+            background: #D4AF37;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .view-btn:hover {
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .locations-container {
+                padding: 30px 20px;
+            }
+
+            .locations-header h1 {
+                font-size: 28px;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html#agents" class="sidebar-item">
+                <span class="sidebar-icon">👥</span>
+                <span class="sidebar-text">Agents</span>
+            </a>
+            <a href="index.html#blogs" class="sidebar-item">
+                <span class="sidebar-icon">📝</span>
+                <span class="sidebar-text">Blogs</span>
+            </a>
+            <a href="index.html#advertisement" class="sidebar-item">
+                <span class="sidebar-icon">📢</span>
+                <span class="sidebar-text">Advertisement</span>
+            </a>
+            <a href="index.html#area-guide" class="sidebar-item">
+                <span class="sidebar-icon">🗺️</span>
+                <span class="sidebar-text">Area Guide</span>
+            </a>
+            <a href="index.html#services" class="sidebar-item">
+                <span class="sidebar-icon">🔧</span>
+                <span class="sidebar-text">Services</span>
+            </a>
+            <a href="index.html#calculator" class="sidebar-item">
+                <span class="sidebar-icon">🧮</span>
+                <span class="sidebar-text">Mortgage Calculator</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📋</span>
+                <span class="sidebar-text">Listings</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="location-detail.html">Location Detail</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="invoice.html">Invoice</a></li>
+            <li><a href="crypto.html">Crypto</a></li>
+            <li><a href="index.html#properties">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="locations-container">
+        <div class="locations-header">
+            <h1>Properties by Location</h1>
+            <p>Explore our premium properties across Nigeria</p>
+        </div>
+
+        <div class="locations-grid" id="locationsGrid"></div>
+    </div>
+
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="properties-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sidebar Toggle Functionality
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const sidebar = document.getElementById("sidebar");
+            const sidebarClose = document.getElementById("sidebarClose");
+
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener("click", function () {
+                    sidebar.classList.toggle("active");
+                });
+
+                if (sidebarClose) {
+                    sidebarClose.addEventListener("click", function () {
+                        sidebar.classList.remove("active");
+                    });
+                }
+
+                document.querySelectorAll(".sidebar-item").forEach(item => {
+                    item.addEventListener("click", function () {
+                        sidebar.classList.remove("active");
+                    });
+                });
+            }
+
+            const locationsGrid = document.getElementById('locationsGrid');
+            const locations = getLocations();
+
+            locations.forEach(location => {
+                const card = document.createElement('a');
+                card.href = `location-detail.html?location=${encodeURIComponent(location.name)}`;
+                card.className = 'location-card';
+                card.innerHTML = `
+                    <img src="${location.sample}" alt="${location.name}" class="location-image">
+                    <div class="location-info">
+                        <div>
+                            <div class="location-name">${location.name}</div>
+                            <div class="property-count">${location.count} propert${location.count > 1 ? 'ies' : 'y'}</div>
+                        </div>
+                        <button class="view-btn" onclick="event.preventDefault(); window.location.href = this.parentElement.parentElement.href;">View Properties</button>
+                    </div>
+                `;
+                locationsGrid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>

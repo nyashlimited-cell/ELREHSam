@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - ElrehSam Homes & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .contact-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-block {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-block h3 {
+            color: #d4a574;
+            margin-bottom: 10px;
+        }
+
+        .info-block p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .info-block a {
+            color: #d4a574;
+            text-decoration: none;
+        }
+
+        .info-block a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #d4a574;
+            box-shadow: 0 0 5px rgba(212, 165, 116, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            background: #d4a574;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #c4945f;
+        }
+
+        #formStatus {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+
+        #formStatus.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        #formStatus.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html#agents" class="sidebar-item">
+                <span class="sidebar-icon">👥</span>
+                <span class="sidebar-text">Agents</span>
+            </a>
+            <a href="index.html#blogs" class="sidebar-item">
+                <span class="sidebar-icon">📝</span>
+                <span class="sidebar-text">Blogs</span>
+            </a>
+            <a href="index.html#advertisement" class="sidebar-item">
+                <span class="sidebar-icon">📢</span>
+                <span class="sidebar-text">Advertisement</span>
+            </a>
+            <a href="index.html#area-guide" class="sidebar-item">
+                <span class="sidebar-icon">🗺️</span>
+                <span class="sidebar-text">Area Guide</span>
+            </a>
+            <a href="index.html#services" class="sidebar-item">
+                <span class="sidebar-icon">🔧</span>
+                <span class="sidebar-text">Services</span>
+            </a>
+            <a href="index.html#calculator" class="sidebar-item">
+                <span class="sidebar-icon">🧮</span>
+                <span class="sidebar-text">Mortgage Calculator</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📋</span>
+                <span class="sidebar-text">Listings</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Building base -->
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <!-- Left tower -->
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <!-- Right tower -->
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <!-- Windows left column -->
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <!-- Windows middle column -->
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <!-- Windows right column -->
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <!-- Roof peak -->
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <!-- Door -->
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="location-detail.html">Location Detail</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="invoice.html">Invoice</a></li>
+            <li><a href="crypto.html">Crypto</a></li>
+            <li><a href="#properties">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+        <h1>Contact ElrehSam Homes & Services</h1>
+
+        <div class="contact-info">
+            <div class="info-block">
+                <h3>📍 Address</h3>
+                <p>123 Property Lane<br>Lekki, Lagos<br>Nigeria</p>
+            </div>
+
+            <div class="info-block">
+                <h3>📞 Phone</h3>
+                <p><a href="tel:+234-801-234-5678">+234 (0) 801 234 5678</a><br>
+                   <a href="tel:+234-909-876-5432">+234 (0) 909 876 5432</a></p>
+            </div>
+
+            <div class="info-block">
+                <h3>✉️ Email</h3>
+                <p><a href="mailto:info@elrehsam.com">info@elrehsam.com</a><br>
+                   <a href="mailto:support@elrehsam.com">support@elrehsam.com</a></p>
+            </div>
+
+            <div class="info-block">
+                <h3>🕒 Business Hours</h3>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                   Saturday: 10:00 AM - 4:00 PM<br>
+                   Sunday: Closed</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Send us a Message</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+                <p id="formStatus"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

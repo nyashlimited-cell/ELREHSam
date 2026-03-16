@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental Services - ElrehSam Homes & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .rental-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
+        }
+
+        .rental-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .rental-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .rental-header p {
+            color: #B0B8C1;
+            font-size: 16px;
+        }
+
+        .rental-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .rental-service-card {
+            background: #1E293B;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .rental-service-card:hover {
+            background: #0B1220;
+            border-color: #D4AF37;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .rental-service-card h3 {
+            font-size: 22px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rental-service-icon {
+            font-size: 28px;
+        }
+
+        .rental-service-card p {
+            color: #B0B8C1;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .rental-service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .rental-service-card li {
+            color: #DDE7F0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .rental-service-card li:last-child {
+            border-bottom: none;
+        }
+
+        .rental-service-card li:before {
+            content: "✓ ";
+            color: #D4AF37;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .process-section {
+            background: #1E293B;
+            border-left: 4px solid #D4AF37;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .process-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .step {
+            background: #0B1220;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-number {
+            font-size: 32px;
+            color: #D4AF37;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step h4 {
+            color: #DDE7F0;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #9AA4B2;
+            font-size: 14px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #D4AF37 0%, #c4945f 100%);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: #0B1220;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #0B1220;
+            color: #D4AF37;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #0B1220;
+        }
+
+        @media (max-width: 768px) {
+            .rental-container {
+                margin: 40px 20px;
+                padding: 20px;
+            }
+
+            .rental-header h1 {
+                font-size: 28px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebarClose">✕</div>
+        <div class="sidebar-title">Menu</div>
+        <nav class="sidebar-menu">
+            <a href="index.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Home</span>
+            </a>
+            <a href="locations.html" class="sidebar-item">
+                <span class="sidebar-icon">📍</span>
+                <span class="sidebar-text">Locations</span>
+            </a>
+            <a href="property-management.html" class="sidebar-item">
+                <span class="sidebar-icon">🛠️</span>
+                <span class="sidebar-text">Property Management</span>
+            </a>
+            <a href="property-sales.html" class="sidebar-item">
+                <span class="sidebar-icon">💰</span>
+                <span class="sidebar-text">Property Sales</span>
+            </a>
+            <a href="rental-services.html" class="sidebar-item">
+                <span class="sidebar-icon">🏠</span>
+                <span class="sidebar-text">Rental Services</span>
+            </a>
+            <a href="investment.html" class="sidebar-item">
+                <span class="sidebar-icon">📈</span>
+                <span class="sidebar-text">Investment</span>
+            </a>
+            <a href="payment.html" class="sidebar-item">
+                <span class="sidebar-icon">💳</span>
+                <span class="sidebar-text">Payment</span>
+            </a>
+            <a href="contact.html" class="sidebar-item">
+                <span class="sidebar-icon">✉️</span>
+                <span class="sidebar-text">Contact</span>
+            </a>
+            <a href="login.html" class="sidebar-item">
+                <span class="sidebar-icon">🔐</span>
+                <span class="sidebar-text">Login</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="25" y="35" width="50" height="55" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="15" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="65" y="25" width="20" height="65" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+                <rect x="30" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="30" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="46" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="42" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="56" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <rect x="62" y="70" width="8" height="8" fill="none" stroke="#D4AF37" stroke-width="1"/>
+                <polygon points="50,20 35,35 65,35" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <rect x="45" y="78" width="10" height="12" fill="none" stroke="#D4AF37" stroke-width="1"/>
+            </svg>
+            <span class="logo-text">ElrehSam Homes</span>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="property-management.html">Property Management</a></li>
+            <li><a href="property-sales.html">Property Sales</a></li>
+            <li><a href="rental-services.html">Rental Services</a></li>
+            <li><a href="investment.html">Investment</a></li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-btn"><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Rental Services Content -->
+    <div class="rental-container">
+        <div class="rental-header">
+            <h1>Rental Services</h1>
+            <p>Comprehensive property leasing and management solutions for both landlords and tenants</p>
+        </div>
+
+        <!-- Service Cards -->
+        <div class="rental-services-grid">
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">📋</span> Lease Management</h3>
+                <p>Professional lease agreement preparation and management.</p>
+                <ul>
+                    <li>Custom lease drafting</li>
+                    <li>Legal compliance review</li>
+                    <li>Lease renewal & termination</li>
+                    <li>Amendment documentation</li>
+                </ul>
+            </div>
+
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">👥</span> Tenant Screening</h3>
+                <p>Comprehensive screening to ensure reliable tenants.</p>
+                <ul>
+                    <li>Credit checks</li>
+                    <li>Background verification</li>
+                    <li>Employment verification</li>
+                    <li>Reference checks</li>
+                </ul>
+            </div>
+
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">🔧</span> Property Maintenance</h3>
+                <p>Regular maintenance and repairs to keep properties in top condition.</p>
+                <ul>
+                    <li>Routine inspections</li>
+                    <li>Emergency repairs</li>
+                    <li>Preventive maintenance</li>
+                    <li>Vendor coordination</li>
+                </ul>
+            </div>
+
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">💰</span> Rent Collection</h3>
+                <p>Reliable and efficient rent collection with transparent accounting.</p>
+                <ul>
+                    <li>Monthly rent collection</li>
+                    <li>Online payment portal</li>
+                    <li>Late payment handling</li>
+                    <li>Detailed financial reports</li>
+                </ul>
+            </div>
+
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">📞</span> Tenant Support</h3>
+                <p>24/7 support for tenant inquiries and emergency issues.</p>
+                <ul>
+                    <li>Responsive communication</li>
+                    <li>Maintenance request handling</li>
+                    <li>Issue resolution</li>
+                    <li>Complaint management</li>
+                </ul>
+            </div>
+
+            <div class="rental-service-card">
+                <h3><span class="rental-service-icon">📊</span> Property Analytics</h3>
+                <p>Data-driven insights for optimal property management.</p>
+                <ul>
+                    <li>Market analysis reports</li>
+                    <li>Rental price optimization</li>
+                    <li>Occupancy tracking</li>
+                    <li>Financial performance metrics</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Process Section -->
+        <div class="process-section">
+            <h2>Our Rental Process</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Property Assessment</h4>
+                    <p>We evaluate your property and market conditions</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Tenant Screening</h4>
+                    <p>Comprehensive background and credit verification</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Lease Preparation</h4>
+                    <p>Legal and compliant lease documentation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Move-In Inspection</h4>
+                    <p>Detailed property condition documentation</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Ongoing Management</h4>
+                    <p>Maintenance, rent collection, and support</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h4>Move-Out & Turnover</h4>
+                    <p>Final inspection and property preparation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Manage Your Rental?</h2>
+            <p>Let our expert team handle all aspects of property leasing and management</p>
+            <a href="contact.html" class="cta-btn">Get Started Today</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 ElrehSam Homes & Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
